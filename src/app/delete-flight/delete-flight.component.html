@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body class="container">
+        <h2 align="center">Delete Flight </h2>
+<form  #data="ngForm" (ngSubmit)="deleteFlightById(data)">
+    <div class="d-flex justify-content-center">
+       
+    <div>
+    <br><input type="number" placeholder="Flight Number : XXXX" name="flightNumber" ngModel>
+    
+    <input type="submit" class="btn btn-danger"  value="delete">
+    </div>
+    
+    </div>
+    <div *ngIf="deleteStatus==='Deleted'">
+        <div class="panel-heading"><h3>Flight Deleted successfully</h3></div>
+    </div> 
+    <div *ngIf="deleteStatus==='notDeleted'">
+        <div class="panel-heading"><h3>Flight with this Flight number do not exists!!</h3></div>
+    </div> 
+    </form>
+     
+    </body>
+    </html>

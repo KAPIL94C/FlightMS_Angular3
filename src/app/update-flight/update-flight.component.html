@@ -1,0 +1,57 @@
+
+<html>
+    <head>
+        
+    </head>
+    <body class="container">
+        
+        <div class="d-flex justify-content-center">
+                
+        <form #flightForm="ngForm" class="border-class"   (submit)="flightForm.valid && updateFlight(flightForm)">
+              
+            <div><label><h2>Update Flights!!</h2></label></div>
+            <div class="form-group">
+                <input type="number" placeholder="Flight Number : XXXX" name="flightNumber" #flightModelodelCtrl="ngModel" class="form-control" ngModel required >
+                <div *ngIf="flightModelodelCtrl.errors!=null && flightModelodelCtrl.errors.required">
+                    flight Number is required 
+                   </div>
+            </div>    
+            <div class="form-group">
+                    <input type="text" placeholder="Flight Model : XXXX"  name="flightModel" #flightModelodelCtrl="ngModel" class="form-control" ngModel required >
+                    <div *ngIf="flightModelodelCtrl.errors!=null && flightModelodelCtrl.errors.required">
+                        flight model is required 
+                       </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Carrier Name : XXXX"  name="carrierName" #carrierNameCtrl="ngModel" class="form-control" ngModel required>
+                    <div *ngIf="carrierNameCtrl.errors!=null && carrierNameCtrl.errors.required">
+                        flight name is required 
+                       </div>
+                </div>  
+                <div class="form-group">
+                    <input type="number" placeholder="Seat Capacity : XXXX"  #seatCapacityCtrl="ngModel"  name="seatCapacity" class="form-control" ngModel required>
+                    <div *ngIf="seatCapacityCtrl.errors!=null && seatCapacityCtrl.errors.required">
+                        Seat Capacity is required 
+                       </div>
+                </div>
+
+            <div class="form-group"> 
+                <input type="submit" value="Update" class="btn btn-success" style="margin:5px">
+            <input type="reset" value="Reset"  class="btn btn-info" style="margin:5px">
+            
+            </div>
+            <div *ngIf="foundStatus==='found'">
+                <h3 style="color:mediumpurple;">Flight updated successfuly</h3>  
+                 
+                </div>
+                <div *ngIf="foundStatus==='notfound'">
+                    <h3 style="color:mediumpurple;">Flight with this number do not exists!!</h3>  
+                     
+                    </div>
+        </form>
+       
+        
+      </div>
+    </body>
+</html>
+

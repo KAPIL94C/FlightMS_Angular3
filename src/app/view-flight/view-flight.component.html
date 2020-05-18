@@ -1,0 +1,48 @@
+<html>
+    <head></head>
+    <body class="container">
+
+<form  #data="ngForm" (ngSubmit)="findFlightById(data)">
+
+    <div class="d-flex justify-content-center ">
+    
+    <div>
+    <br><br>
+    <input type="number" placeholder="Flight Number : XXXX" name="flightNumber" ngModel>
+    </div>
+    <div>
+        <br><br>
+    <input type="submit" value="Search">
+    </div>
+   </div>
+  
+    </form>
+
+    <div class="d-flex justify-content-center" >
+
+    <div>
+
+        <div class="panel-heading"> <br> <h3>Search  Flight Status !!!</h3><br></div>
+    <div *ngIf="foundStatus==='found'">
+   <div>
+        <label><b>Flight Number :  </b></label>{{foundFlight.flightNumber}}
+        </div>
+        <div> 
+    <label><b> Flight  Model :</b></label>{{foundFlight.flightModel}}
+    </div>
+    <div>
+        <label><b> Carrier Name :</b></label>{{foundFlight.carrierName}}
+        </div>
+        <div>
+            <label><b> Seat Capacity :</b></label>{{foundFlight.seatCapacity}}
+            </div>
+    </div>
+    <div *ngIf="foundStatus==='notfound'">
+    Flight not found !!
+    </div>
+
+    </div>
+    </div>
+
+</body>
+</html>

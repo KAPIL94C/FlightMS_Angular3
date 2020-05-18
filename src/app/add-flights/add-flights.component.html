@@ -1,0 +1,55 @@
+
+<html>
+    <head>
+        
+    </head>
+    <body class="container">
+        
+        <div class="d-flex justify-content-center ">
+                       
+        <form #flightForm="ngForm" class="border-class"   (submit)="flightForm.valid && addFlight(flightForm)">
+              
+            <div><label><h2>Add Flights!!</h2></label></div>
+                <div class="form-group">
+                    <label for="flightModel"> Flight Model :</label>
+                    <input type="text" name="flightModel" #flightModelodelCtrl="ngModel" class="form-control" ngModel required >
+                    <div  *ngIf="flightModelodelCtrl.errors!=null && flightModelodelCtrl.errors.required">
+                        flight model is required 
+                       </div>
+                </div>
+
+
+                <div class="form-group">
+                   <label for="carrierName">Carrier Name :</label> 
+                    <input type="text" name="carrierName" #carrierNameCtrl="ngModel" class="form-control" ngModel required>
+                    <div *ngIf="carrierNameCtrl.errors!=null && carrierNameCtrl.errors.required">
+                        flight name is required 
+                       </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="seatCapacity">Seat Capacity :</label> 
+                    <input type="number" #seatCapacityCtrl="ngModel"  name="seatCapacity" class="form-control" ngModel required>
+                    <div *ngIf="seatCapacityCtrl.errors!=null && seatCapacityCtrl.errors.required">
+                        Seat Capacity is required 
+                       </div>
+                </div>
+
+
+            <div class="form-group"> 
+                <input type="submit" style="margin:5px" value="Add" class="btn btn-success">
+            <input type="reset" style="margin:5px" value="Reset" class="btn btn-info">
+            </div>
+            <div *ngIf="addedFlight!==null">
+                <h3 style="color:green;">Flight Added Successfully</h3>  
+                
+                </div>
+
+        </form>
+
+        
+      </div>
+    </body>
+</html>
+
