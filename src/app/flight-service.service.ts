@@ -13,7 +13,7 @@ export class FlightServiceService {
   this.client=client;
   }
 
-  baseFlightUrl="http://localhost:8086/flights";
+  baseFlightUrl="http://localhost:8587/flights";
 
   /**
   * fires post request to server with flight as body

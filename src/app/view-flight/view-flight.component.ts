@@ -33,7 +33,7 @@ export class ViewFlightComponent implements OnInit {
      },
     err=>{
       this.foundStatus="notfound";
-     console.log("err while fetching employees="+err);  
+     console.log("err while fetching flight="+err);  
      }
    ); 
 

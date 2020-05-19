@@ -29,14 +29,18 @@ export class DeleteFlightComponent implements OnInit {
     result.subscribe(flight=>{
         this.removeLocalFlight(id);
         this.deleteStatus="Deleted";
+        
     },err=>{
       this.deleteStatus="notDeleted"
      console.log("err in deleteing flight="+err);
     })
+    this.deleteStatus=null;
+    form.reset();
+    
       }
 
  /**
-  * remove the employee object in local array  so that it will be reflected in the view
+  * remove the flight object in local array  so that it will be reflected in the view
   * @param id 
   */     
 removeLocalFlight(id:number){

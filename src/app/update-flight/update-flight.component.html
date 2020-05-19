@@ -9,43 +9,58 @@
                 
         <form #flightForm="ngForm" class="border-class"   (submit)="flightForm.valid && updateFlight(flightForm)">
               
-            <div><label><h2>Update Flights!!</h2></label></div>
+        
+            <div class="text-primary"><h4>UPDATE FLIGHT!!!</h4></div>
             <div class="form-group">
-                <input type="number" placeholder="Flight Number : XXXX" name="flightNumber" #flightModelodelCtrl="ngModel" class="form-control" ngModel required >
-                <div *ngIf="flightModelodelCtrl.errors!=null && flightModelodelCtrl.errors.required">
+                <label for="flightModel"> Flight Number :</label>
+                <input type="number" [class.is-invalid]="numberCtrl.invalid && numberCtrl.touched" placeholder="Flight Number : XXXX" name="flightNumber" #numberCtrl="ngModel" class="form-control" ngModel required >
+                <small  class="text-danger" [class.d-none]="numberCtrl.valid || numberCtrl.untouched">
                     flight Number is required 
-                   </div>
+                </small>
             </div>    
             <div class="form-group">
-                    <input type="text" placeholder="Flight Model : XXXX"  name="flightModel" #flightModelodelCtrl="ngModel" class="form-control" ngModel required >
-                    <div *ngIf="flightModelodelCtrl.errors!=null && flightModelodelCtrl.errors.required">
-                        flight model is required 
-                       </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Carrier Name : XXXX"  name="carrierName" #carrierNameCtrl="ngModel" class="form-control" ngModel required>
-                    <div *ngIf="carrierNameCtrl.errors!=null && carrierNameCtrl.errors.required">
-                        flight name is required 
-                       </div>
-                </div>  
-                <div class="form-group">
-                    <input type="number" placeholder="Seat Capacity : XXXX"  #seatCapacityCtrl="ngModel"  name="seatCapacity" class="form-control" ngModel required>
-                    <div *ngIf="seatCapacityCtrl.errors!=null && seatCapacityCtrl.errors.required">
-                        Seat Capacity is required 
-                       </div>
-                </div>
+                <label for="flightModel"> Flight Model :</label>
+                <input type="text" [class.is-invalid]="modelCtrl.invalid && modelCtrl.touched" placeholder="Flight Model : XXXX"name="flightModel" #modelCtrl="ngModel" class="form-control" ngModel required >
+                <small  class="text-danger" [class.d-none]="modelCtrl.valid || modelCtrl.untouched">
+                    flight model is required 
+                </small>
+            </div>
+
+
+            <div class="form-group">
+               <label for="carrierName">Carrier Name :</label> 
+                <input type="text" name="carrierName" [class.is-invalid]="carrierCtrl.invalid && carrierCtrl.touched" placeholder="Carrier Name : XXXX" #carrierCtrl="ngModel" class="form-control" ngModel required>
+                <small  class="text-danger" [class.d-none]="carrierCtrl.valid || carrierCtrl.untouched">
+                    flight name is required 
+                </small>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="seatCapacity">Seat Capacity :</label> 
+                <input type="number" [class.is-invalid]="seatCtrl.invalid && seatCtrl.touched" placeholder="Seat Capacity : XXXX" #seatCtrl="ngModel"  name="seatCapacity" class="form-control" ngModel required>
+                <small  class="text-danger" [class.d-none]="seatCtrl.valid || seatCtrl.untouched">
+                    Seat Capacity is required 
+                </small>
+            </div>
+
 
             <div class="form-group"> 
-                <input type="submit" value="Update" class="btn btn-success" style="margin:5px">
-            <input type="reset" value="Reset"  class="btn btn-info" style="margin:5px">
+                <input type="submit" value="Update" [disabled]="flightForm.invalid" class="btn btn-success" style="margin:5px">
+
             
             </div>
             <div *ngIf="foundStatus==='found'">
-                <h3 style="color:mediumpurple;">Flight updated successfuly</h3>  
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Flight updated successfuly.
+                  </div>
+                 
                  
                 </div>
                 <div *ngIf="foundStatus==='notfound'">
-                    <h3 style="color:mediumpurple;">Flight with this number do not exists!!</h3>  
+                    <div class="alert alert-danger">
+                        <strong>Failed !</strong> Flight with this number do not exists!!.
+                      </div>
                      
                     </div>
         </form>
